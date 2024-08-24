@@ -27,12 +27,20 @@ variable "aws_secret_access_key" {
   sensitive = true
 }
 
+variable "aws_security_group_id" {
+  description = "aws security group id"
+  type = string
+}
+
 
 
 resource "aws_instance" "mysql-client" {
   ami           = "ami-0e86e20dae9224db8"
   instance_type = "t2.micro"
   key_name      = "beanstalk-key"
+
+
+vpc_security_group_ids = [var.aws_security_group_id]
 
   provisioner "remote-exec" {
     inline = [
@@ -47,7 +55,7 @@ resource "aws_instance" "mysql-client" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("/root/beanstalk-key.pem") #Change to your private key absolute path
+      private_key = file("/home/daniel/Downloads/beanstalk-key.pem") #Change to your private key absolute path
       host        = self.public_ip
     }
   }

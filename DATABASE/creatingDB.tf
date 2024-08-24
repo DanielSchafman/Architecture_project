@@ -1,5 +1,7 @@
 provider "aws" {
   region = "us-east-1"
+  access_key = var.aws_access_key_id
+  secret_key = var.aws_secret_access_key
 }
 
 variable "rds_endpoint" {
@@ -12,6 +14,20 @@ variable "db_password" {
   type        = string
   sensitive   = true
 }
+
+variable "aws_access_key_id"{
+  description = "aws access key"
+  type = string
+  sensitive = true
+}
+
+variable "aws_secret_access_key" {
+  description = "aws_secret_access_key"
+  type = string
+  sensitive = true
+}
+
+
 
 resource "aws_instance" "mysql-client" {
   ami           = "ami-0e86e20dae9224db8"
@@ -31,7 +47,7 @@ resource "aws_instance" "mysql-client" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("/home/daniel/Downloads/beanstalk-key.pem") #Change to your private key absolute path
+      private_key = file("/root/beanstalk-key.pem") #Change to your private key absolute path
       host        = self.public_ip
     }
   }

@@ -22,9 +22,9 @@ resource "aws_instance" "mysql-client" {
     inline = [
       "sudo apt-get update -y",
       "sudo apt-get install -y mysql-client git",
-      "mkdir -p /var/tmp/architecture_project",
-      "cd /var/tmp/architecture_project",
+      "cd /var/tmp/",
       "git clone https://github.com/DanielSchafman/Architecture_project.git",
+      "cd /var/tmp/Architecture_project",
       "mysql -h ${var.rds_endpoint} -P 3306 -u admin -p${var.db_password} < mysql.sql"
     ]
 

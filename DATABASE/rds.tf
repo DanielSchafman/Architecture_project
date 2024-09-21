@@ -6,6 +6,13 @@ resource "aws_security_group" "rds_sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"  # Allow all protocols
+    cidr_blocks = ["0.0.0.0/0"]  # Allow outbound traffic to all destinations
+  }
+  
 }
 
 resource "aws_db_instance" "myrds" {

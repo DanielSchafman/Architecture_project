@@ -1,0 +1,19 @@
+CREATE DATABASE IF NOT EXISTS mydatabase;
+
+USE mydatabase;
+
+CREATE TABLE IF NOT EXISTS MyLines(
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    ObjectPath VARCHAR(255) NOT NULL,
+    Date VARCHAR(50) NOT NULL,
+    AmountOfLines INT NOT NULL
+);
+
+
+
+CREATE TABLE IF NOT EXISTS MyWords(
+    ObjectPath VARCHAR(255) NOT NULL,
+    Date VARCHAR(50) NOT NULL,
+    AmountOfWords INT NOT NULL,
+    PRIMARY KEY (ObjectPath,Date)
+);

@@ -1,5 +1,10 @@
 /passwords.txt
 /DATABASE/terraform.tfvars
-.terraform
-.terraform.lock.hcl
-terraform.tfstate
+/DATABASE/.terraform
+/DATABASE/.terraform.lock.hcl
+/DATABASE/terraform.tfstate
+/DATABASE/terraform.tfstate.backup
+/LINES_COUNTER/.terraform
+/LINES_COUNTER/.terraform.lock.hcl
+/LINES_COUNTER/terraform.tfstate
+/LINES_COUNTER/terraform.tfvars
